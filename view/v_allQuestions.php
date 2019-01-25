@@ -8,21 +8,18 @@
     <h1>База вопросов</h1>
     <a href="../index.php">НАЗАД</a>
     <a href="../controller/addQuestion.php">Добавить вопрос</a><br>
+<?php foreach ($allQuestions as $value):?>
 <table border="2" width="60%">
   <tr>
-    <th>Вопрос №1</th>
+    <th><?php echo $value['title']; ?></th>
   </tr>
   <tr>
-    <td>Ответ на вопрос №1</td>
+    <td><?php echo $value['question']; ?></td>
+  </tr>
+  <tr>
+    <td><?php echo $value['answer']; ?></td>
   </tr>
 </table>
-<table border="2" width="60%">
-  <tr>
-    <th>Вопрос №2</th>
-  </tr>
-  <tr>
-    <td>Ответ на вопрос №2</td>
-  </tr>
-</table>
+<?php endforeach; ?>
   </body>
 </html>

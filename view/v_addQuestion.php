@@ -10,11 +10,11 @@
     <h1>Добавить вопрос</h1>
     <form method="POST">
       <p>Заглавие вопроса:</p>
-      <input type="text" name="titleQuestion">
+      <input type="text" name="title">
       <p>Текст вопроса:</p>
-      <textarea name="comment" cols="40" rows="3"></textarea>
+      <textarea name="question" cols="40" rows="3"></textarea>
       <p>Текст ответа:</p>
-      <textarea name="comment" cols="40" rows="3"></textarea>
+      <textarea name="answer" cols="40" rows="3"></textarea>
       <p><input type="submit" value="Добавить"></p>
     </form>
 
