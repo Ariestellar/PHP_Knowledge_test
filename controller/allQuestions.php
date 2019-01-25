@@ -1,10 +1,9 @@
 <?php
 require_once('../components/db_connect.php');
-$allQuestions=array();
-foreach($connection->query("SELECT * FROM questions") as $row)
-{
-  $allQuestions[]=array('id'=> $row['id'],'title'=>$row['title'],'question'=>$row['question'],'answer'=>$row['answer']);
-};
+require_once('../model/workdb.php');
+$allQuestions=allQuestions($connection);
 require_once('../view/v_allQuestions.php');
-
+if(isset($_POST)&& $_POST!=''){
+  deleteDB($_POST['del'],$connection);
+}
 ?>
