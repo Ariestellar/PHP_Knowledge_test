@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>База вопросов</title>
-  </head>
-  <body>
-    <h1>База вопросов</h1>
-    <a href="../index.php">НАЗАД</a>
-    <a href="../controller/addQuestion.php">Добавить вопрос</a><br>
+<a href="../index.php">НАЗАД</a>
+<a href="../controller/addQuestion.php">Добавить вопрос</a><br>
 <?php foreach ($allQuestions as $value):if($value != 0):?>
 <table border="2" width="60%">
   <tr>
@@ -23,7 +15,4 @@
     <td><form method="post"><input type='hidden' name='del' value='<?php echo $value["id"] ?>'/><input type="submit" value="Удалить"></form></td>
   </tr>
 </table>
-
-<?php endif;endforeach; var_dump($_POST) ?>
-  </body>
-</html>
+<?php endif;endforeach; var_dump($_POST);?>
