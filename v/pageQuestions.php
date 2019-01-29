@@ -1,9 +1,7 @@
-<a href="../index.php">НАЗАД</a>
-<a href="../controller/addQuestion.php">Добавить вопрос</a><br>
-<?php foreach ($allQuestions as $value):if($value != 0):?>
+<?php foreach ($allQuestions as $key => $value):if($value != 0):?>
 <table border="2" width="60%">
   <tr>
-    <th>Вопрос№<?php echo $value['id']; ?></th>
+    <th><a href='./index.php?id=<?php echo $key+1;?>&act=edit'>Вопрос№<?php echo $key+1; ?></a></th>
   </tr>
   <tr>
     <td><?php echo $value['question']; ?></td>
@@ -15,4 +13,4 @@
     <td><form method="post"><input type='hidden' name='del' value='<?php echo $value["id"] ?>'/><input type="submit" value="Удалить"></form></td>
   </tr>
 </table>
-<?php endif;endforeach; var_dump($_POST);?>
+<?php endif;endforeach;?>

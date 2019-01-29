@@ -1,7 +1,6 @@
-<a href="../index.php">НАЗАД</a>
+<p>В разработке</p>
 <p>Вопрос№1из10</p>
-<p><?php echo $allQuestions[$randQuestion]['question']?></p>
-<p><?php echo $allQuestions[$randQuestion]['answer']?></p>
+<p>Текст вопроса</p>
 <form method="POST">
   <p>Выберите правильный ответ</p>
   <div>
@@ -10,6 +9,6 @@
     <input type="radio" name="question" value="wrong">Неправильный<br>
   </div>
   <div>
-    <p><button type="Submit">Готово</button></p>
+    <p><button type="submit">Готово</button></p>
   </div>
 </form>
