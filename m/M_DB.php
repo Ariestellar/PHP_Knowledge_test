@@ -27,7 +27,6 @@ class M_DB
 		return new self;
 	}
 /**
-*@var $table - имя таблицы
 *@var $post - массив, ключи-имена столбцов, значения -данные в БД
 */
   public function insertBD($post)
@@ -39,15 +38,6 @@ class M_DB
     if($allQuestions[count($allQuestions)-1]['question']!=$post['question']){
       $this->instance->query("INSERT INTO questions (question,answer) VALUES ('$post[question]','$post[answer]')");
     }
-  }
-
-  public function allSelect()
-  {
-    foreach($this->instance->query("SELECT * FROM questions") as $row)
-    {
-      $allQuestions[]=array('id'=> $row['id'],'title'=>$row['title'],'question'=>$row['question'],'answer'=>$row['answer']);
-    }
-    return $allQuestions;
   }
 
   public function deleteDB($post)
@@ -62,6 +52,18 @@ class M_DB
       $this->instance->quote($value);
     }
     $this->instance->query("UPDATE questions SET question='$post[question]', answer='$post[answer]' WHERE id='$post[id]'");
+  }
+
+	/**
+	*@return $allQuestions - массив c 0-.. каждый элемент
+	*/
+	public function allSelect()
+  {
+    foreach($this->instance->query("SELECT * FROM questions") as $row)
+    {
+      $allQuestions[]=array('id'=> $row['id'],'title'=>$row['title'],'question'=>$row['question'],'answer'=>$row['answer']);
+    }
+    return $allQuestions;
   }
 }
 ?>

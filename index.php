@@ -6,7 +6,6 @@ function __autoload($nameClass)
   }else{
     require_once("./c/{$nameClass}.php");
   }
-  //require_once("./m/{$nameClass}.php");
 }
 switch($_GET['c'])
 {

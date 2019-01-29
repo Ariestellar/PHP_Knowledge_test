@@ -5,26 +5,26 @@ class C_Page extends C_Base
   public function Action_index()
   {
     $this->title.='Все вопросы';
-    $x= M_DB::getInstance();
+    $connect= M_DB::getInstance();
     if($this->isPOST())
     {
       $post=$_POST['del'];
-      $x->deleteDB($post);
+      $connect->deleteDB($post);
     }
-    $this->allQuestions=$x->allSelect();
+    $this->allQuestions=$connect->allSelect();
     $this->content=$this->template('./v/pageQuestions.php',['allQuestions'=>$this->allQuestions]);
   }
   public function Action_edit()
   {
     $this->title.='Редактирование';
-    $x= M_DB::getInstance();
-    $this->allQuestions=$x->allSelect();
+    $connect= M_DB::getInstance();
+    $this->allQuestions=$connect->allSelect();
     if($this->isPOST())
     {
       $post['id']=$_GET['id'];
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
-      $x->updateBD($post);
+      $connect->updateBD($post);
     }
     $this->content=$this->template('./v/editQuestion.php',['allQuestions'=>$this->allQuestions]);
   }
@@ -35,10 +35,9 @@ class C_Page extends C_Base
     if($this->isPOST())
     {
       $post['question']=$_POST['question'];
-      $post['answer']=$_POST['answer'];
-      //addBD($post,$this->connection);
-      $x= M_DB::getInstance();
-      $x->insertBD($post);
+      $post['answer']=$_POST['answer'];    
+      $connect= M_DB::getInstance();
+      $connect->insertBD($post);
     }
     $this->content=$this->template('./v/addQuestion.php');
   }
