@@ -1,9 +1,12 @@
 <?php
-require_once 'components/db_connect.php';
-require_once 'm/model.php';
 function __autoload($nameClass)
 {
-  require_once("./c/{$nameClass}.php");
+  if($nameClass == 'M_DB'){
+    require_once("./m/{$nameClass}.php");
+  }else{
+    require_once("./c/{$nameClass}.php");
+  }
+  //require_once("./m/{$nameClass}.php");
 }
 switch($_GET['c'])
 {

@@ -5,24 +5,26 @@ class C_Page extends C_Base
   public function Action_index()
   {
     $this->title.='Все вопросы';
+    $x= M_DB::getInstance();
     if($this->isPOST())
     {
       $post=$_POST['del'];
-      deleteDB($post,$this->connection);
+      $x->deleteDB($post);
     }
-    $this->allQuestions=allQuestions($this->connection);
+    $this->allQuestions=$x->allSelect();
     $this->content=$this->template('./v/pageQuestions.php',['allQuestions'=>$this->allQuestions]);
   }
   public function Action_edit()
   {
     $this->title.='Редактирование';
-    $this->allQuestions=allQuestions($this->connection);
+    $x= M_DB::getInstance();
+    $this->allQuestions=$x->allSelect();
     if($this->isPOST())
     {
       $post['id']=$_GET['id'];
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
-      updateBD($post,$this->connection);
+      $x->updateBD($post);
     }
     $this->content=$this->template('./v/editQuestion.php',['allQuestions'=>$this->allQuestions]);
   }
@@ -34,7 +36,9 @@ class C_Page extends C_Base
     {
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
-      addBD($post,$this->connection);
+      //addBD($post,$this->connection);
+      $x= M_DB::getInstance();
+      $x->insertBD($post);
     }
     $this->content=$this->template('./v/addQuestion.php');
   }
