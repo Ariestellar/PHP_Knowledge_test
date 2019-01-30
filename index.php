@@ -13,6 +13,7 @@ switch($_GET['c'])
   $content=new C_Page();
   break;
   case 'test':
+  session_start();
   $content=new C_Test();
   break;
   default:
