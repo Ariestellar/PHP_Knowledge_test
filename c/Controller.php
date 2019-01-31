@@ -41,6 +41,6 @@ abstract class Controller
   //вызов несуществующей функции
   public function __call($name,$params)
   {
-    die("{$name} 404 такой страницы не существует");
+    die("{$name} такой функции не существует");
   }
 }
