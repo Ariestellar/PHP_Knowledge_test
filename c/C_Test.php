@@ -6,7 +6,7 @@ class C_Test extends C_Base
   public $listQuestion;
 
   public function Action_start()
-  {
+  {    
     $this->title.='Тест';
     $connect=M_DB::getInstance();
     if(!$_SESSION['question'])
@@ -30,12 +30,6 @@ class C_Test extends C_Base
     $pageTest=$this->template('./v/mainTest.php',['url'=>$url,'but'=>$but]);
     $this->content=$this->template('./v/test.php',['pageTest'=>$pageTest]);
   }
-
-  /*public function Action_setup()
-  {
-    $this->title.='ТЕСТ';
-    $this->content=$this->template('./v/setupTest.php');
-  }*/
 
   public function Action_done()
   {

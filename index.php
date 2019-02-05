@@ -1,4 +1,5 @@
 <?php
+session_start();
 function __autoload($nameClass)
 {
   if($nameClass == 'M_DB'){
@@ -7,13 +8,22 @@ function __autoload($nameClass)
     require_once("./c/{$nameClass}.php");
   }
 }
+
+//$urlinfo=$_SERVER['REQUEST_URI'];
+//$urlparts
+var_dump($_GET);
+
+//$action=;
+//$controller=;
+
+
 switch($_GET['c'])
 {
   case 'page':
   $content=new C_Page();
   break;
   case 'test':
-  session_start();
+  //session_start();
   $content=new C_Test();
   break;
   default:

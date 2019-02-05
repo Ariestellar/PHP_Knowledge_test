@@ -1,5 +1,7 @@
-DirectoryIndex index.php
-RewriteEngine On
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /myproject.loc/PHPtest/PHP_Knowledge_test/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.php
+RewriteRule (.*) /myproject.loc/PHPtest/PHP_Knowledge_test/index.php?$1 [QSA,L]
+</IfModule>
