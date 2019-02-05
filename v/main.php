@@ -5,7 +5,7 @@
     <title><?php echo $title ?></title>
   </head>
   <body>
-    <p><a href="index.php?c=test&act=start">Начать тест</a> || <a href="index.php">База вопросов</a> || <a href="index.php?act=addQuestion">Добавить вопрос</a></p>
+    <p><a href="/PHPtest/PHP_Knowledge_test/test/start">Начать тест</a> || <a href="/PHPtest/PHP_Knowledge_test/page">База вопросов</a> || <a href="/PHPtest/PHP_Knowledge_test/page/addQuestion">Добавить вопрос</a></p>
     <h1><?php echo $title ?></h1>
     <div><?php echo $content ?></div>
   </body>

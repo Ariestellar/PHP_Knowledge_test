@@ -21,12 +21,12 @@ class C_Page extends C_Base
     $this->allQuestions=$connect->allSelect();
     if($this->isPOST())
     {
-      $post['id']=$_GET['id'];
+      $post['id']=$this->params;
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
       $connect->updateBD($post);
     }
-    $this->content=$this->template('./v/editQuestion.php',['allQuestions'=>$this->allQuestions]);
+    $this->content=$this->template('./v/editQuestion.php',['allQuestions'=>$this->allQuestions,'numQuestions'=>$this->params]);
   }
 
   public function Action_addQuestion()
@@ -35,7 +35,7 @@ class C_Page extends C_Base
     if($this->isPOST())
     {
       $post['question']=$_POST['question'];
-      $post['answer']=$_POST['answer'];    
+      $post['answer']=$_POST['answer'];
       $connect= M_DB::getInstance();
       $connect->insertBD($post);
     }

@@ -2,13 +2,18 @@
 abstract class Controller
 {
   public $connection;
+  public $params;
   //Вывод готовых страниц
   abstract function render();
   //Действия пользователя
   abstract function before();
 
-  public function Request($connection,$action)
+  public function Request($connection,$action,$params=NULL)
   {
+    if(isset($params))
+    {
+      $this->params=$params[0];
+    }
     $this->connection=$connection;
     $this->before();
     $this->$action();

@@ -6,7 +6,7 @@ class C_Test extends C_Base
   public $listQuestion;
 
   public function Action_start()
-  {    
+  {
     $this->title.='Тест';
     $connect=M_DB::getInstance();
     if(!$_SESSION['question'])
@@ -24,7 +24,7 @@ class C_Test extends C_Base
        $but='Далее';
     }elseif(count($_SESSION['question']) == $_POST['q']+1)
     {
-      $url='index.php?c=test&act=done';
+      $url='/PHPtest/PHP_Knowledge_test/test/done';
       $but='Готово';
     }
     $pageTest=$this->template('./v/mainTest.php',['url'=>$url,'but'=>$but]);

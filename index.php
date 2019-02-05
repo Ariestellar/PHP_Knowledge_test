@@ -9,28 +9,25 @@ function __autoload($nameClass)
   }
 }
 
-//$urlinfo=$_SERVER['REQUEST_URI'];
-//$urlparts
-var_dump($_GET);
-
-//$action=;
-//$controller=;
-
-
-switch($_GET['c'])
+$url_info=$_SERVER['REQUEST_URI'];
+$url_parts=explode('/',$url_info);
+$params=[];
+foreach ($url_parts as $v)
 {
-  case 'page':
-  $content=new C_Page();
-  break;
-  case 'test':
-  //session_start();
-  $content=new C_Test();
-  break;
-  default:
-  $content=new C_Page();
-  break;
+  if( $v!='index.php' && $v!='' && $v!='PHPtest' && $v!='PHP_Knowledge_test')
+  {
+    $params[]=$v;
+  }
 }
-$action='Action_';
-$action.=(isset($_GET['act']))?$_GET['act']:'index';
-$content->Request($connection,$action);
+
+$controller = isset($params[0])?array_shift($params):'Page';
+$action = isset($params[0])?array_shift($params):'index';
+
+$controller='C_'.ucfirst($controller);
+$action='Action_'.$action;
+$content= new $controller();
+var_dump($controller);
+var_dump($action);
+
+$content->Request($connection,$action,$params);
 ?>
