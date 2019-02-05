@@ -36,7 +36,7 @@ class M_DB
     }
     $allQuestions=$this->allSelect();
     if($allQuestions[count($allQuestions)-1]['question']!=$post['question']){
-      $this->instance->query("INSERT INTO questions (question,answer) VALUES ('$post[question]','$post[answer]')");
+      $this->instance->query("INSERT INTO questions (question,answer,incorrect_unswer1,incorrect_unswer2) VALUES ('$post[question]','$post[answer]','$post[incorrect_unswer1]','$post[incorrect_unswer2]')");
     }
   }
 
@@ -51,7 +51,7 @@ class M_DB
     foreach ($post as $value) {
       $this->instance->quote($value);
     }
-    $this->instance->query("UPDATE questions SET question='$post[question]', answer='$post[answer]' WHERE id='$post[id]'");
+    $this->instance->query("UPDATE questions SET question='$post[question]', answer='$post[answer]',incorrect_unswer1='$post[incorrect_unswer1]',incorrect_unswer2='$post[incorrect_unswer2]' WHERE id='$post[id]'");
   }
 
 	/**
@@ -61,7 +61,7 @@ class M_DB
   {
     foreach($this->instance->query("SELECT * FROM questions") as $row)
     {
-      $allQuestions[]=array('id'=> $row['id'],'title'=>$row['title'],'question'=>$row['question'],'answer'=>$row['answer']);
+      $allQuestions[]=array('id'=> $row['id'],'title'=>$row['title'],'question'=>$row['question'],'answer'=>$row['answer'],'incorrect_unswer1'=>$row['incorrect_unswer1'],'incorrect_unswer2'=>$row['incorrect_unswer2']);
     }
     return $allQuestions;
   }

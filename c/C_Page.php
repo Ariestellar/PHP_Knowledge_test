@@ -21,9 +21,12 @@ class C_Page extends C_Base
     $this->allQuestions=$connect->allSelect();
     if($this->isPOST())
     {
-      $post['id']=$this->params;
+
+      $post['id']=$_POST['id'];
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
+      $post['incorrect_unswer1']=$_POST['incorrect_unswer1'];
+      $post['incorrect_unswer2']=$_POST['incorrect_unswer2'];
       $connect->updateBD($post);
     }
     $this->content=$this->template('./v/editQuestion.php',['allQuestions'=>$this->allQuestions,'numQuestions'=>$this->params]);
@@ -34,6 +37,8 @@ class C_Page extends C_Base
     $this->title.='Добавить вопрос';
     if($this->isPOST())
     {
+      $post['incorrect_unswer1']=$_POST['incorrect_unswer1'];
+      $post['incorrect_unswer2']=$_POST['incorrect_unswer2'];
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
       $connect= M_DB::getInstance();
