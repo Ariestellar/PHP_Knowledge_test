@@ -23,11 +23,12 @@ foreach ($url_parts as $v)
 $controller = isset($params[0])?array_shift($params):'Page';
 $action = isset($params[0])?array_shift($params):'index';
 
+
 $controller='C_'.ucfirst($controller);
 $action='Action_'.$action;
 $content= new $controller();
-var_dump($controller);
-var_dump($action);
+//var_dump($controller);
+//var_dump($action);
 
 $content->Request($connection,$action,$params);
 ?>

@@ -1,7 +1,7 @@
 <?php foreach ($allQuestions as $key => $value):if($value != 0):?>
 <table border="2" width="60%">
   <tr>
-    <th><a href='<?php echo $key+1;?>'>Вопрос№<?php echo $key+1; ?></a></th>
+    <th><a href='./page/edit/<?php echo $key+1;?>'>Вопрос№<?php echo $key+1; ?></a></th>
   </tr>
   <tr>
     <td><?php echo $value['question']; ?></td>
