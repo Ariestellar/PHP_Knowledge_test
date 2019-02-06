@@ -1,6 +1,6 @@
-<form action="index.html" method="post">
-  <p>Логин</p>
-  <input type="text" name="login">
+<form action="" method="post">
+  <p>Email</p>
+  <input type="text" name="email">
   <p>Пароль</p>
   <input type="text" name="password">
   <p>Запомнить меня<input type="checkbox"></p>

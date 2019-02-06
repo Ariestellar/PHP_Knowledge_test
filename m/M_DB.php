@@ -39,6 +39,13 @@ class M_DB
       $this->instance->query("INSERT INTO questions (question,answer,incorrect_unswer1,incorrect_unswer2) VALUES ('$post[question]','$post[answer]','$post[incorrect_unswer1]','$post[incorrect_unswer2]')");
     }
   }
+	public function insertUsersBD($post)
+  {
+    foreach ($post as $value) {
+      $this->instance->quote($value);
+    }
+    $this->instance->query("INSERT INTO users (email,name,login,password) VALUES ('$post[email]','$post[name]','$post[login]','$post[password]')");
+  }
 
   public function deleteDB($post)
   {
@@ -53,7 +60,26 @@ class M_DB
     }
     $this->instance->query("UPDATE questions SET question='$post[question]', answer='$post[answer]',incorrect_unswer1='$post[incorrect_unswer1]',incorrect_unswer2='$post[incorrect_unswer2]' WHERE id='$post[id]'");
   }
-
+	//вевести весь столбец
+	public function searchColumn($search)
+	{
+		foreach ($this->instance->query("SELECT $search FROM users") as $row)
+		{
+			$result[]=$row["$search"];
+		}
+		return $result;
+	}
+	//найти пользователя для авторизации
+	public function searchUsersID($email)
+	{
+		$this->instance->quote($email);
+		//$result=$this->instance->query("SELECT * FROM users WHERE email = '$email'");
+		foreach ($this->instance->query("SELECT * FROM users WHERE email = '$email'") as $row)
+		{
+			$result=array('id' => $row['id'], 'name' => $row['name'], 'password' => $row['password']);
+		}
+		return $result;
+	}
 	/**
 	*@return $allQuestions - массив c 0-.. каждый элемент
 	*/

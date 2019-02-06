@@ -1,4 +1,4 @@
-<form action="index.html" method="post">
+<form action="" method="post">
   <p>E-mail</p>
   <input type="email" name="email">
   <p>Полное имя</p>
