@@ -20,8 +20,7 @@ class C_Page extends C_Base
     $connect= M_DB::getInstance();
     $this->allQuestions=$connect->allSelect();
     if($this->isPOST())
-    {
-
+    {     
       $post['id']=$_POST['id'];
       $post['question']=$_POST['question'];
       $post['answer']=$_POST['answer'];
