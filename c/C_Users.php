@@ -5,12 +5,14 @@ class C_Users extends C_Base
   {
     $this->title.='Авторизация';
     $connect= M_DB::getInstance();
+
     if($this->isPOST() && !empty($_POST['email']) && !empty($_POST['password']))
     {
       $user=$connect->searchUsersID($_POST['email']);
+
       if($_POST['password']==$user['password'])
       {
-        echo "Вы вошли как {$user['name']}";        
+        $_SESSION['username']=$user['name'];
       }else
       {
         echo "Неверный пароль";

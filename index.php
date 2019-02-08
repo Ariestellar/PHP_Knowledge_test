@@ -1,5 +1,25 @@
 <?php
 session_start();
+if(!empty($_POST['cookie']))
+{
+  setcookie('user',$_POST['email'],time()+3600);
+  setcookie('password',$_POST['password'],time()+3600);
+}
+if(!empty($_POST['exitUser']))
+{
+  setcookie('user',$_COOKIE['user'],time()-3600);
+  setcookie('password',$_COOKIE['password'],time()-3600);
+  unset($_SESSION['username']);
+  unset($_POST['cookie']);
+  unset($_POST['exitUser']);
+  header("Location: http://myproject.loc/PHPtest/PHP_Knowledge_test/users/auth");
+}
+
+if((isset($_COOKIE['user'])&&!empty($_COOKIE['user'])) && empty($_SESSION['username']))
+{
+  //$_SESSION['username']=$_COOKIE['user'];
+}
+
 function __autoload($nameClass)
 {
   if($nameClass == 'M_DB'){
@@ -20,8 +40,8 @@ foreach ($url_parts as $v)
   }
 }
 
-$controller = isset($params[0])?array_shift($params):'Page';
-$action = isset($params[0])?array_shift($params):'index';
+$controller = isset($params[0])?array_shift($params):'Users';
+$action = isset($params[0])?array_shift($params):'auth';
 
 
 $controller='C_'.ucfirst($controller);
