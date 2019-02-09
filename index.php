@@ -1,5 +1,21 @@
 <?php
 session_start();
+
+/*if(!isset($_POST['Style']) && ($_COOKIE['login'] != $_SESSION['login'])){
+  $_SESSION['Style']="standart";
+}
+if(!isset($_SESSION['name']) && !isset($_COOKIE['login'])){
+header("Location: http://myproject.loc/PHPtest/PHP_Knowledge_test/users/auth");
+die();
+}
+if(!isset($_SESSION['login']) && isset($_COOKIE['login'])){
+  $_SESSION['login']=$_COOKIE['login'];
+  $_SESSION['Style']=$_COOKIE['style'];
+}
+$username=$_SESSION['login'];*/
+
+
+
 if(!empty($_POST['cookie']))
 {
   setcookie('user',$_POST['email'],time()+3600);
@@ -42,7 +58,6 @@ foreach ($url_parts as $v)
 
 $controller = isset($params[0])?array_shift($params):'Users';
 $action = isset($params[0])?array_shift($params):'auth';
-
 
 $controller='C_'.ucfirst($controller);
 $action='Action_'.$action;

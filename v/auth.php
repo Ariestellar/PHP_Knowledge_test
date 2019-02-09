@@ -1,6 +1,7 @@
 <?php if((isset($_COOKIE['user'])&&!empty($_COOKIE['user']))||isset($_SESSION['username'])&&!empty($_SESSION['username'])):?>
 Сессия: <?php echo $_SESSION['username'];?><br>
 Кука:<?php echo $_COOKIE['user'];?><br>
+Пост:<?php echo $_POST['exitUser'];?><br>
 <form action="" method="post">
 <input type="submit" value="Выйти" name="exitUser">
 </form>
