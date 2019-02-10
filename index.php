@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 function __autoload($nameClass)
 {
   if($nameClass == 'M_DB'){
